@@ -16,8 +16,9 @@ function pay(e) {
     errorMsg("מספר כרטיס הוא רק ספרות");
     return;
   }
-  if (cardInput.value != 16) {
+  if (cardInput.value.length !== 16) {
     errorMsg("מספר כרטיס מכיל 16 ספרות.");
     return;
   }
+  window.location.replace("/views/login.html?from=payment");
 }

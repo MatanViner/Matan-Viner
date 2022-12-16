@@ -39,15 +39,15 @@ export const measurementsCheck = function (
   } //when registed
 
   //when adding new measures
-  if (checkIsNumber(waistInput.value) || waistInput.value <= 0) {
+  if (checkIsNumber(waistInput.value) || waistInput.value < 0) {
     errorMsg("היקף המותן אינו מספר תקין");
     return false;
   }
-  if (checkIsNumber(chestInput.value) || chestInput.value <= 0) {
+  if (checkIsNumber(chestInput.value) || chestInput.value < 0) {
     errorMsg("היקף החזה אינו מספר תקין");
     return false;
   }
-  if (checkIsNumber(armsInput.value) || armsInput.value <= 0) {
+  if (checkIsNumber(armsInput.value) || armsInput.value < 0) {
     errorMsg("היקף הזרועות אינו מספר תקין");
     return false;
   }
