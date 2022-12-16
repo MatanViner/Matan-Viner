@@ -18,7 +18,7 @@
   flex-direction: column;
   text-align: center;
 }
-p {
+#calculators p {
   text-align: center;
   color: rgb(151, 134, 134);
   margin: 0 8rem;
