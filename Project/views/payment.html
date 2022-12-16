@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="/static/css/payment.css" />
+    <script defer src="/static/script.js"></script>
+    <script defer src="/static/js/payment.js"></script>
+    <title>תשלום מקוון</title>
+  </head>
+  <body id="payment">
+    <div class="multiForm">
+      <div class="circle">
+        <span>1<br />הרשמה</span
+        ><img src="/static/images/Icons/verify.png" alt="verify" />
+      </div>
+      <div class="circle">
+        <span>2<br />בחירת תוכנית</span
+        ><img src="/static/images/Icons/answer.png" alt="choose" />
+      </div>
+      <div class="circle">
+        <span>3<br />תשלום</span
+        ><img src="/static/images/Icons/credit-card.png" alt="credit-card" />
+      </div>
+    </div>
+    <div>
+      <h1 class="Title">תשלום מקוון</h1>
+      <img
+        class="imgContainer floating-img"
+        src="/static/images/Icons/CreditCard.png"
+        alt="logo"
+        height="60"
+      />
+    </div>
+    <form class="formContainer">
+      <div class="input-group">
+        <label>מספר כרטיס:</label>
+        <input id="cardNum" type="text" placeholder="xxxxxxxxxxxxxxxx" />
+      </div>
+      <div class="input-group">
+        <label>סוג כרטיס:</label>
+        <select id="type">
+          <option value="3mounths">VISA</option>
+          <option value="6mouths">Dinners</option>
+          <option value="year">Master Card</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>תוקף כרטיס:</label>
+        <input id="year" type="number" min="2022" value="2022" /> /
+        <select id="mounth">
+          <option value="january">1</option>
+          <option value="feburary">2</option>
+          <option value="march">3</option>
+          <option value="april">4</option>
+          <option value="may">5</option>
+          <option value="june">6</option>
+          <option value="july">7</option>
+          <option value="august">8</option>
+          <option value="september">9</option>
+          <option value="october">10</option>
+          <option value="november">11</option>
+          <option value="december">12</option>
+        </select>
+      </div>
+      <button id="payButton" class="button-primary redRainbow">שלם</button>
+    </form>
+    <div id="alert" class="alert hidden">
+      <span class="closebtn">&times;</span>
+      <strong>שים לב! <span id="msg"></span></strong>
+    </div>
+  </body>
+</html>

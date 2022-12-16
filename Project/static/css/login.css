@@ -1,0 +1,26 @@
+#login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#login footer {
+  align-self: normal;
+}
+
+#login form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#login form .login-button {
+  width: fit-content;
+  align-self: center;
+  padding: 4px 8px;
+  border-radius: 50px;
+}
+#login form .login-button:hover {
+  background-color: antiquewhite;
+}

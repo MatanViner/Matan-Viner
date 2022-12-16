@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="/static/css/calculators.css" />
+    <script defer src="/static/script.js"></script>
+    <script defer src="/static/js/calculators.js"></script>
+    <title>מחשבוני בריאות</title>
+  </head>
+  <body id="calculators">
+    <main>
+      <p class="Pcontainer">
+        בעזרת מחשבון BMI שלנו תוכלו לגלות האם המשקל שלכם תקין, האם אתם סובלים
+        מעודף משקל או מתת־משקל ותקבלו המלצות המותאמות למצבכם. <br />
+        כל מה שצריך לעשות זה לוודא שבפרופיל שלכם הפרטים גיל, משקל וגובה מעודכנים
+        בהתאם למדידה האחרונה שלכם!
+      </p>
+      <h1 class="subTitle">
+        דבר הצוות
+        <img src="/static/images/Icons/healthcare.png" alt="healthcare" />
+      </h1>
+      <p class="Pcontainer">
+        גם אנחנו משתמשים במחשבון הזה במהלך העבודה שלנו, אבל אנחנו - המאמנים -
+        יודעים לסייג ולהסביר את התוצאות ללקוחות שלנו.
+        <br />
+        למה? כי כמו שלא כולם נועדו להיות בגובה ממוצע, כך גם ניתן לקבוע שלא כולם
+        נועדו להיות בטווח המשקל/אחוז שומן שנחשב תקין על־פי ה־BMI.
+        <br />
+        ישנו מרכיב נוסף וחשוב לא פחות שמשפיע וקובע - גנטיקה.
+        <br />
+        יש כאלה שדווקא מתאזנים והכי בריאים עם BMI שנחשב "עודף".
+      </p>
+    </main>
+    <div class="imgContainer heartbeat">
+      <img
+        src="/static/images/Icons/heartbeat.png"
+        alt="heart picture"
+        height="200"
+      />
+    </div>
+    <div class="details inputs-container">
+      <form class="formContainer">
+        <div class="input-group SelectBox">
+          <div class="tooltip">
+            <img src="/static/images/Icons/info.png" alt="activity" />
+            <span class="tooltiptext">
+              <ul>
+                <li>ללא פעילות - אורח חיים יושבני</li>
+                <li>מעט פעיל - בין 1-2 אימונים בשבוע</li>
+                <li>פעיל - בין 3-4 אימונים בשבוע</li>
+                <li>פעיל מאוד - 5+ אימונים בשבוע</li>
+              </ul>
+            </span>
+          </div>
+          <label>בחר רמת פעילות:</label>
+          <select id="activity">
+            <option value="not active">לא פעיל</option>
+            <option value="lightly active">מעט פעיל</option>
+            <option value="active">פעיל</option>
+            <option value="very active">פעיל מאוד</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <div class="tooltip">
+            <img src="/static/images/Icons/info.png" alt="info" />
+            <span class="tooltiptext"
+              >אחוזי השומן יתנו לנו מדד של כמות השומן בגוף ביחס לשאר המרכיבים
+              בגוף כמו נוזלים, איברים, עצמות, שרירים וכו'.
+            </span>
+          </div>
+          <label>אחוז שומן מוערך:</label>
+          <input id="bodyFat" type="text" disabled />
+        </div>
+        <div class="input-group">
+          <div class="tooltip">
+            <img
+              class="hovertext"
+              src="/static/images/Icons/info.png"
+              alt="info"
+            />
+            <span class="tooltiptext"
+              >מדד BMI הוא פרמטר שמודד את מסת הגוף, ונותן ביטוי להשמנה או
+              להרזיה.</span
+            >
+          </div>
+          <label>BMI:</label>
+          <input id="BMI" type="text" disabled />
+        </div>
+
+        <div class="input-group">
+          <div class="tooltip">
+            <img src="/static/images/Icons/info.png" alt="info" />
+            <span class="tooltiptext"
+              >ה- BMR (הקצב המטאבולי הבסיסי) הוא מדד המייצג את כמות האנרגיה
+              שהגוף שורף במצב מנוחה מוחלטת. כלומר, כמות האנרגיה הנחוצה לשם שמירה
+              על תפקודים גופניים הכרחיים בלבד, כגון: הכפלת תאים, הפעלת שרירי
+              הנשימה, שריר הלב ושרירים חלקים, העברת גירויים עצביים והעברה פעילה
+              דרך קרומי תאים.</span
+            >
+          </div>
+          <label>צריכת הקלוריות היומית במנוחה: </label>
+
+          <input id="BMR" type="text" disabled />
+        </div>
+
+        <button class="button-primary" id="calculatorButton">
+          <span>חשב</span>
+          <img
+            src="/static/images/Icons/calculator.png"
+            alt="calculator icon"
+          />
+        </button>
+      </form>
+    </div>
+
+    <div id="recomendation" class="hidden">
+      <h1 class="Title" id="recomendationTitle">ההמלצה בשבילך היא:</h1>
+      <div class="result">
+        <p id="MainResult"></p>
+        <br />
+        <ul class="factsList">
+          <h3 class="subTitle">מקובל לחלק את תוצאות הBMI לארבע קטגוריות:</h3>
+          <li>
+            <div class="red">תת משקל</div>
+            - BMI קטן מ-18.5
+          </li>
+          <li>
+            <div class="green">משקל תקין</div>
+            - BMI נע בין 18.5 ל-25
+          </li>
+          <li>
+            <div class="yellow">עודף משקל קל</div>
+            - BMI נע בין 25 ל-30
+          </li>
+          <li>
+            <div class="red">השמנת יתר</div>
+            - BMI גדול מ-30
+          </li>
+        </ul>
+        <div>
+          <input
+            type="range"
+            min="10"
+            max="35"
+            class="slider"
+            id="myRange"
+            disabled
+          />
+        </div>
+        <p>התוצאה שלך היא: <span id="currentValue"></span></p>
+        <br />
+        <p id="resultExplained"></p>
+      </div>
+
+      <table id="menueTable" class="myTable">
+        <div>
+          <h2 class="subTitle">להלן תפריט שמומלץ עבורך אישית:</h2>
+          <h3>כללים מנחים לגבי התפריט המוצע:</h3>
+          <ul class="menue">
+            <li>
+              אין להתחיל בתפריט התזונה הכתוב לפני התייעצות עם רופא / תזונאי
+              מוסמך.
+            </li>
+            <li>יש לדאוג לכמות מים מספקת במהלך היום.</li>
+            <li>
+              ניתן להחליף ארוחה בארוחה. למשל, את ארוחת הבוקר בארוחת הצהריים, את
+              ארוחת הצהריים בארוחת הערב וכדומה.
+            </li>
+            <li>
+              ניתן לשלב מאכלים מאותו אב מזון. למשל ארוחה שיש בה 2 ביצים קשות או
+              קופסת טונה, יכולה להתחלק לביצה אחת + חצי קופסת טונה.
+            </li>
+          </ul>
+        </div>
+        <tbody>
+          <tr>
+            <th>ארוחה</th>
+            <th>מנת חלבון</th>
+            <th>מנת פחמימות</th>
+            <th>מנת שומן</th>
+            <th>מנת ירק/פרי</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="warnings">
+      <ul>
+        <li>
+          השימוש במחשבון מיועד לגיל 18 ויותר. מתחת לגיל 18 עיקר החשיבות היא מגמת
+          גדילה אחידה שתואמת את המאפיינים ואת הצרכים האישיים.
+        </li>
+        <li>
+          המידע שמוצג במחשבון ובהמלצות לא מבוסס על הנתונים הרפואיים האישיים שלך
+          - לכן, מומלץ לפני ביצוע כל המלצה שקיבלת להתייעץ עם רופא.
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

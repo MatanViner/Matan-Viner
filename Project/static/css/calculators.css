@@ -1,0 +1,112 @@
+#calculators {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  gap: 10px;
+}
+#calculators .input-group label {
+  display: flex;
+  float: right;
+}
+#factsList {
+  color: rgb(246, 111, 73);
+  list-style-type: circle;
+}
+.result {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+p {
+  text-align: center;
+  color: rgb(151, 134, 134);
+  margin: 0 8rem;
+}
+#calculators .formContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+#calculators .formContainer {
+  display: flex;
+}
+
+#calculators footer {
+  align-self: normal;
+  margin-top: 20px;
+}
+
+#calculators .heartbeat img {
+  margin-top: 10px;
+  height: 120px;
+}
+.warnings {
+  margin-top: 100px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  border-top-style: dotted;
+  color: rgb(95, 95, 95);
+  text-decoration: double;
+}
+
+.warnings li {
+  list-style: circle;
+  list-style-image: url(/static/images/Icons/warning.png);
+}
+.menue {
+  margin: 0 150px;
+}
+.menue li {
+  list-style: circle;
+  list-style-image: url(/static/images/Icons/dish.png);
+}
+
+.factsList li {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+#calculators .subTitle {
+  color: rgb(255, 77, 77);
+}
+
+h3 {
+  margin-right: 100px;
+}
+
+#calculators .myTable {
+  visibility: visible;
+}
+
+.slider {
+  background: rgb(255, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(255, 180, 0, 1) 18%,
+    rgba(25, 218, 7, 1) 46%,
+    rgba(249, 255, 5, 1) 65%,
+    rgba(255, 0, 0, 1) 100%
+  );
+  -webkit-appearance: none;
+  margin-top: 10px;
+  width: 100%;
+  outline: none;
+  opacity: 0.7;
+  width: 60%;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  padding: 3px;
+  width: 25px;
+  height: 25px;
+  background: #000000;
+  cursor: pointer;
+}

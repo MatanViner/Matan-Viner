@@ -1,0 +1,39 @@
+#profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#profile .main {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+#profile .main #personal-details {
+  display: flex;
+}
+#profile .main #personal-details .details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#profile .main #personal-details .imgContainer {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  gap: 10px;
+}
+#profile .main #personal-details button {
+  min-width: 150px;
+}
+
+#profile .main #measurements {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  gap: 10px;
+}
+
+#profile .button-primary {
+  width: 100%;
+}
