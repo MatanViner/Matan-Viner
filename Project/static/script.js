@@ -23,7 +23,7 @@ class Customer {
 
     this.phone = phone;
     this.email = email;
-    this.JoinDate = Date();
+    this.joinDate = new Date().getTime();
     if (!measurements[0].height || !measurements[0].weight) {
       throw new Error("Missing data");
     }
@@ -48,7 +48,6 @@ const exampleUser = new Customer({
   gender: MALE,
   dob: "2000-08-13",
   phone: "052-8816615",
-  joinDate: new Date(),
   email: "matanvi@post.bgu.ac.il",
   measurements: [
     {
@@ -223,7 +222,7 @@ const headerHTML = `
           <li><a href="/views/calculators.html">מחשבונים</a></li>
           <li><a href="/views/progress.html">התהליך שלי</a></li>
           <li><a href="/views/contact.html">צור קשר</a></li>
-          <li class="hidden" id="logoutlink"><a href="/views/index.html">התנתק</a></li>
+          <li class="hidden" id="logoutlink" ><a  >התנתק</a></li>
         </ul>
       </nav>
     </header>
@@ -254,10 +253,11 @@ if (localStorage.getItem("currentUser")) {
   loginLink.style.display = "none";
   logoutLink.style.display = "unset";
   logoutButton.onclick = logout;
-  logoutLink.onclick = logoutButton.onclick;
+  logoutLink.onclick = logout;
 }
 
-function logout() {
+function logout(e) {
+  e.preventDefault();
   const logoutButton = document.getElementById("logoutButton");
   const logoutLink = document.getElementById("logoutlink");
   logoutLink.style.display = "none";
@@ -298,11 +298,6 @@ document.head.appendChild(iconlink);
 //HELPFUL FUNCTIONS
 function checkForNums(input) {
   return (result = /^\d+$/.test(input));
-}
-
-function checkIsNumber(input) {
-  const checked = Number(input);
-  return isNaN(checked);
 }
 
 //END

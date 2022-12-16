@@ -1,3 +1,4 @@
+import { measurementsCheck, nameCheck, checkDate } from "./form-validation.js";
 const overlayHTML = '<div class="overlaye"><h1>הרשמה</h1></div>';
 header.innerHTML += overlayHTML;
 
@@ -63,7 +64,12 @@ function nextPage(e) {
 }
 
 function validation() {
-  return passwordCheck() && nameCheck() && measurementsCheck() && checkDate();
+  return (
+    passwordCheck() &&
+    nameCheck(firstNameInput, lastNameInput, errorMsg) &&
+    measurementsCheck(WeightInput, errorMsg) &&
+    checkDate(dobInput, errorMsg)
+  );
 }
 
 const passwordCheck = function () {
@@ -73,37 +79,6 @@ const passwordCheck = function () {
   }
   if (passwordInput.value !== repasswordInput.value) {
     errorMsg("הסיסמאות אינן תואמות.");
-    return false;
-  }
-  return true;
-};
-const nameCheck = function () {
-  if (firstNameInput.value.length < 2 || lastNameInput.value < 2) {
-    errorMsg("בחר שם/שם משפחה שמכיל יותר מאות אחת.");
-    return false;
-  }
-  if (
-    !checkIsNumber(firstNameInput.value) ||
-    !checkIsNumber(lastNameInput.value)
-  ) {
-    errorMsg("שם פרטי/משפחה מכיל מספרים.");
-    return false;
-  }
-  return true;
-};
-const measurementsCheck = function () {
-  if (checkIsNumber(WeightInput.value)) {
-    errorMsg("משקל אינו מספר");
-    return false;
-  }
-  return true;
-};
-
-const checkDate = function () {
-  const age =
-    (new Date() - new Date(dobInput.value)) / (1000 * 60 * 60 * 24 * 365);
-  if (age < 10) {
-    errorMsg("ההרשמה היא מגיל 10.");
     return false;
   }
   return true;

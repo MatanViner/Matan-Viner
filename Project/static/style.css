@@ -166,11 +166,6 @@ input {
   pointer-events: none;
 }
 
-.SelectBox:hover::before {
-  color: rgba(255, 255, 255, 0.6);
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
 .SelectBox select option {
   padding: 30px;
 }
@@ -195,6 +190,14 @@ header .overlaye {
   color: #fff;
   text-shadow: 1px 1px 1px #333;
   background-image: linear-gradient(135deg, #f90808cb 10%, #fd5e086b 100%);
+}
+
+#logoutlink {
+  cursor: pointer;
+}
+
+header .overlaye a {
+  text-decoration: none;
 }
 
 header h1 {

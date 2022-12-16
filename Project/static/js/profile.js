@@ -1,3 +1,4 @@
+import { measurementsCheck, nameCheck, checkDate } from "./form-validation.js";
 //checks if user is loged in
 const userJson = localStorage.getItem("currentUser");
 if (!userJson) {
@@ -17,7 +18,7 @@ const newDetailsButton = document.getElementById("");
 const userNameInput = document.getElementById("username");
 const firstNameInput = document.getElementById("firstName");
 const lastNameInput = document.getElementById("lastName");
-const bodInput = document.getElementById("bod");
+const dobInput = document.getElementById("bod");
 const genderInput = document.getElementById("gender");
 const phoneInput = document.getElementById("phone");
 const emailInput = document.getElementById("email");
@@ -32,11 +33,11 @@ waistInput.value = user.measurements[user.measurements.length - 1].waist;
 userNameInput.value = user.username;
 firstNameInput.value = user.firstName;
 lastNameInput.value = user.lastName;
-bodInput.value = new Date(user.dob).toISOString().split("T")[0];
+dobInput.value = new Date(user.dob).toISOString().split("T")[0];
 phoneInput.value = user.phone;
 emailInput.value = user.email;
 genderInput.value = user.gender;
-joinDateInput.value = new Date(user.joinDate)
+joinDateInput.value = new Date(user.joinDate).toISOString().split("T")[0];
 
 //START MEASURE BUTTON FUNCTION//
 function newMeasure(e) {
@@ -73,6 +74,7 @@ function saveMeasure(e) {
     .forEach((input) => (input.disabled = true));
   newMeasurementButton.onclick = newMeasure;
   newMeasurementButton.innerText = "מדידה חדשה";
+  newMeasurementButton.setAttribute("type", "");
 }
 //START MEASURE BUTTON FUNCTION//
 
@@ -83,15 +85,28 @@ function update(e) {
     .querySelectorAll("form#personal-details input")
     .forEach((input) => (input.disabled = false));
   updateButton.innerText = "שמור פרטים";
+  updateButton.setAttribute("type", "submit");
+
   updateButton.onclick = saveUpdate;
+}
+
+function validateInputs() {
+  return (
+    nameCheck(firstNameInput, lastNameInput, errorMsg) &&
+    measurementsCheck(WeightInput, errorMsg) &&
+    checkDate(dobInput, errorMsg)
+  );
 }
 
 function saveUpdate(e) {
   e.preventDefault();
+  if (!validateInputs()) {
+    return;
+  }
   user.username = userNameInput.value;
   user.firstName = firstNameInput.value;
   user.lastName = lastNameInput.value;
-  user.bod = bodInput.value;
+  user.bod = dobInput.value;
   user.phone = phoneInput.value;
   user.email = emailInput.value;
   localStorage.setItem("currentUser", JSON.stringify(user));

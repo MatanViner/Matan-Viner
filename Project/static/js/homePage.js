@@ -22,7 +22,9 @@ const overlayHTML = `
       <button class="yellowRainbow">כניסה לפרופיל</button>
     </a>
   </div>`;
-header.innerHTML += overlayHTML;
+const overlay = document.createElement("div");
+overlay.innerHTML = overlayHTML;
+header.appendChild(overlay);
 
 if (localStorage.getItem("currentUser")) {
   const joinButton = document.getElementById("joinNow");

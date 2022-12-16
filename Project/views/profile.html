@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/static/css/profile.css" />
     <link rel="stylesheet" href="/static/style.css" />
-    <script defer src="/static/js/profile.js"></script>
     <script defer src="/static/script.js"></script>
+    <script defer type="module" src="/static/js/profile.js"></script>
     <title>הפרופיל שלי</title>
   </head>
   <body id="profile">
@@ -17,7 +17,7 @@
         <div class="details">
           <div class="input-group">
             <label>שם משתמש:</label>
-            <input id="username" type="text" disabled />
+            <input id="username" type="text" required disabled />
           </div>
           <div class="input-group">
             <label>שם:</label>
@@ -35,8 +35,8 @@
             <label>מגדר:</label>
             <select disabled id="gender">
               <option value="" disabled hidden selected>בחר מגדר</option>
-              <option name="male" value="גבר">גבר</option>
-              <option name="female" value="אישה">אישה</option>
+              <option name="male" value="זכר">גבר</option>
+              <option name="female" value="נקבה">אישה</option>
               <option name="other" value="אחר">אחר</option>
             </select>
           </div>
@@ -113,6 +113,10 @@
           </button></a
         >
       </form>
+    </div>
+    <div id="alert" class="alert hidden">
+      <span class="closebtn">&times;</span>
+      <strong>שים לב!<span id="msg"></span></strong>
     </div>
   </body>
 </html>
