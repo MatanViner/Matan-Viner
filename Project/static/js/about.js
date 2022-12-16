@@ -6,7 +6,5 @@ header.appendChild(overlay);
 const userJson = localStorage.getItem("currentUser");
 if (userJson) {
   const joinNowButton = document.getElementById("joinNowButton");
-  joinNowButton.innerText = "צפו בשינוי שלכם!";
-  joinNowButton.href = "/views/progress.html";
-  joinNowButton.className = "button-primary redRainbow floating-img";
+  joinNowButton.style.display = "none";
 }
