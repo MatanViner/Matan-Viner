@@ -1,6 +1,7 @@
-
 const overlayHTML = '<div class="overlaye"><h1>תשלום מקוון</h1></div>';
-header.innerHTML += overlayHTML;
+const overlay = document.createElement("div");
+overlay.innerHTML = overlayHTML;
+header.appendChild(overlay);
 
 const cardInput = document.getElementById("cardNum");
 const yearInput = document.getElementById("year");

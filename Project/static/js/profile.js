@@ -1,4 +1,9 @@
-import { measurementsCheck, nameCheck, checkDate } from "./form-validation.js";
+import {
+  measurementsCheck,
+  nameCheck,
+  checkDate,
+  checkUserName,
+} from "./form-validation.js";
 //checks if user is loged in
 const userJson = localStorage.getItem("currentUser");
 if (!userJson) {
@@ -6,6 +11,7 @@ if (!userJson) {
 }
 const user = JSON.parse(userJson);
 //get measurements inputs
+const updateForm = document.querySelectorAll("form#personal-details input");
 const newMeasurementButton = document.getElementById("measurebutton");
 const updateButton = document.getElementById("update");
 const heightInput = document.getElementById("height");
@@ -49,14 +55,12 @@ function newMeasure(e) {
   newMeasurementButton.onclick = saveMeasure;
 }
 
+// save measure
 function saveMeasure(e) {
   e.preventDefault();
-
-  const height = parseFloat(heightInput.value);
-  if (height == 0) {
-    alert("Height cannot be 0");
+  if (!validateInputs()) {
+    return;
   }
-
   const measure = {
     date: new Date().getTime(), // 32432784234 -> new Date(4243214234).
     arms: armsInput.value,
@@ -65,8 +69,6 @@ function saveMeasure(e) {
     waist: waistInput.value,
     weight: WeightInput.value,
   };
-
-  // save
   user.measurements.push(measure);
   localStorage.setItem("currentUser", JSON.stringify(user));
   document
@@ -76,7 +78,7 @@ function saveMeasure(e) {
   newMeasurementButton.innerText = "מדידה חדשה";
   newMeasurementButton.setAttribute("type", "");
 }
-//START MEASURE BUTTON FUNCTION//
+//END
 
 //START UPDATE BUTTON FUNCTIONS//
 function update(e) {
@@ -84,17 +86,26 @@ function update(e) {
   document
     .querySelectorAll("form#personal-details input")
     .forEach((input) => (input.disabled = false));
+  genderInput.disabled = false;
+  joinDateInput.disabled = true;
   updateButton.innerText = "שמור פרטים";
   updateButton.setAttribute("type", "submit");
-
   updateButton.onclick = saveUpdate;
 }
 
 function validateInputs() {
   return (
     nameCheck(firstNameInput, lastNameInput, errorMsg) &&
-    measurementsCheck(WeightInput, errorMsg) &&
-    checkDate(dobInput, errorMsg)
+    measurementsCheck(
+      WeightInput,
+      heightInput,
+      waistInput,
+      chestInput,
+      armsInput,
+      errorMsg
+    ) &&
+    checkDate(dobInput, errorMsg) &&
+    checkUserName(userNameInput, errorMsg)
   );
 }
 
@@ -114,9 +125,11 @@ function saveUpdate(e) {
   document
     .querySelectorAll("form#personal-details input")
     .forEach((input) => (input.disabled = true));
+  genderInput.disabled = true;
   updateButton.onclick = update;
 }
 //END UPDATE BUTTON FUNCTIONS//
+updateButton.setAttribute("type", "submit");
 updateButton.onclick = update;
 newMeasurementButton.onclick = newMeasure;
 //

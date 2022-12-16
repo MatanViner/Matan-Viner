@@ -1,5 +1,7 @@
 const overlayHTML = '<div class="overlaye"><h1>מחשבונים והמלצות</h1></div>';
-header.innerHTML += overlayHTML;
+const overlay = document.createElement("div");
+overlay.innerHTML = overlayHTML;
+header.appendChild(overlay);
 
 //WEIGHT STAGES
 const UNDERWEIGHT = "תת משקל";

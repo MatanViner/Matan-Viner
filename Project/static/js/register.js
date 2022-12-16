@@ -1,6 +1,8 @@
 import { measurementsCheck, nameCheck, checkDate } from "./form-validation.js";
 const overlayHTML = '<div class="overlaye"><h1>הרשמה</h1></div>';
-header.innerHTML += overlayHTML;
+const overlay = document.createElement("div");
+overlay.innerHTML = overlayHTML;
+header.appendChild(overlay);
 
 const heightInput = document.getElementById("height");
 const WeightInput = document.getElementById("weight");
@@ -67,7 +69,7 @@ function validation() {
   return (
     passwordCheck() &&
     nameCheck(firstNameInput, lastNameInput, errorMsg) &&
-    measurementsCheck(WeightInput, errorMsg) &&
+    measurementsCheck(WeightInput, heightInput, 1, 1, 1, errorMsg) &&
     checkDate(dobInput, errorMsg)
   );
 }

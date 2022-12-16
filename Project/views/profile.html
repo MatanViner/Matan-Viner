@@ -21,15 +21,15 @@
           </div>
           <div class="input-group">
             <label>שם:</label>
-            <input id="firstName" type="text" disabled />
+            <input id="firstName" type="text" required disabled />
           </div>
           <div class="input-group">
             <label>שם משפחה:</label>
-            <input id="lastName" type="text" disabled />
+            <input id="lastName" type="text" required disabled />
           </div>
           <div class="input-group">
             <label>תאריך לידה:</label>
-            <input id="bod" type="date" disabled />
+            <input id="bod" type="date" required disabled />
           </div>
           <div class="input-group SelectBox">
             <label>מגדר:</label>
@@ -42,15 +42,15 @@
           </div>
           <div class="input-group">
             <label>טלפון:</label>
-            <input id="phone" type="text" disabled />
+            <input id="phone" type="text" required disabled />
           </div>
           <div class="input-group">
             <label>דו"אל:</label>
-            <input id="email" type="email" disabled />
+            <input id="email" type="email" required disabled />
           </div>
           <div class="input-group">
             <label>תאריך הצטרפות:</label>
-            <input id="joinDate" type="date" disabled />
+            <input id="joinDate" type="date" required disabled />
           </div>
           <button class="button-primary" id="update">
             <span>עדכן פרטים</span>
@@ -74,6 +74,7 @@
             max="250"
             placeholder="*בסנטימטרים"
             disabled
+            required
           />
         </div>
         <div class="input-group">
@@ -82,15 +83,15 @@
         </div>
         <div class="input-group">
           <label>היקף מותן:</label>
-          <input id="waist" type="number" disabled />
+          <input min="0" id="waist" type="number" required disabled />
         </div>
         <div class="input-group">
           <label>היקף חזה:</label>
-          <input id="chest" type="number" disabled />
+          <input min="0" id="chest" type="number" required disabled />
         </div>
         <div class="input-group">
           <label>היקף ידיים:</label>
-          <input id="arms" type="number" disabled />
+          <input min="0" id="arms" type="number" required disabled />
         </div>
 
         <button class="button-primary" id="measurebutton">

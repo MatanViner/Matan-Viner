@@ -7,7 +7,9 @@ const fromDate = document.getElementById("startDate")?.value;
 const toDate = document.getElementById("endDate")?.value;
 
 const overlayHTML = '<div class="overlaye"><h1>התהליך שלי</h1></div>';
-header.innerHTML += overlayHTML;
+const overlay = document.createElement("div");
+overlay.innerHTML = overlayHTML;
+header.appendChild(overlay);
 
 const titles = {
   fat: "אחוז שומן",

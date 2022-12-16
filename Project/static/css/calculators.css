@@ -80,6 +80,7 @@ h3 {
 }
 
 .slider {
+  border-style: dashed;
   background: rgb(255, 0, 0);
   background: linear-gradient(
     90deg,

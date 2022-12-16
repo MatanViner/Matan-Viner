@@ -25,8 +25,6 @@ li {
 .Title {
   justify-content: center;
   text-align: center;
-  font-weight: 10000px;
-  font-size: 30;
   color: rgb(231, 76, 76);
   padding: 25px;
 }
@@ -135,43 +133,24 @@ li {
 body .button-secondary:hover {
   background-color: rgb(248, 217, 123);
 }
-/* END BUTTON STYLING */
+/* END BUTTONS STYLING */
+
+/*INPUTS ANS SELECT BOX STYLING */
 input {
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
 }
-/* select box design */
+
 .SelectBox select {
-  background-color: #eeeeee;
+  background-color: #f2f2f2;
   color: rgb(0, 0, 0);
   padding: 12px;
   width: 250px;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-  -webkit-appearance: button;
-  appearance: button;
-  outline: none;
 }
 
-.SelectBox::before {
-  content: "\f13a";
-  font-family: FontAwesome;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 20%;
-  height: 100%;
-  text-align: center;
-  font-size: 28px;
-  line-height: 45px;
-  color: rgba(255, 255, 255, 0.5);
-  pointer-events: none;
-}
+/*END INPUTS STYLING*/
 
-.SelectBox select option {
-  padding: 30px;
-}
-/*end select box styling */
-
-/*header design */
+/*HEADER STYLING*/
 header {
   background: url("https://th.bing.com/th/id/R.402e0193ebf098527ea4cd04f9bfeb23?rik=Ca9bVKm7W4NZ3g&riu=http%3a%2f%2fwww.pngmagic.com%2fproduct_images%2fred-background-vector-for-website-banner-use.jpg&ehk=eNV8asShFiyL6YBt6gt7HSDqipJ7tok%2bBJGzMVBkRe8%3d&risl=&pid=ImgRaw&r=0");
   text-align: center;
@@ -191,15 +170,9 @@ header .overlaye {
   text-shadow: 1px 1px 1px #333;
   background-image: linear-gradient(135deg, #f90808cb 10%, #fd5e086b 100%);
 }
-
-#logoutlink {
-  cursor: pointer;
-}
-
 header .overlaye a {
   text-decoration: none;
 }
-
 header h1 {
   font-family: "Dancing Script", cursive;
   font-size: 80px;
@@ -227,6 +200,7 @@ button:hover {
 }
 /* END header design*/
 
+/*MAIN DESIGN*/
 main {
   display: flex;
   flex-direction: column;
@@ -236,8 +210,9 @@ main {
   gap: 20px;
   padding: 15px 0;
 }
+/* END MAIN TAG DESIGN*/
 
-/* footer design */
+/* FOOTER DESIGN */
 .footer {
   background-color: #f82525;
   display: flex;
@@ -398,9 +373,72 @@ main {
   }
 }
 /* END footer design */
+/* NAV STYLING */
 
-/* rainbow animation */
+nav a {
+  text-decoration: none;
+}
 
+.logo {
+  color: #ffc925;
+  margin: 0;
+  font-size: 1.7em;
+}
+
+.main-nav {
+  margin-top: 5px;
+}
+.logo a,
+.main-nav a {
+  padding: 10px 15px;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+}
+
+.main-nav a {
+  color: #fbb92b;
+  font-size: 0.99em;
+}
+
+.main-nav :hover,
+a:hover {
+  color: #fce375;
+}
+
+.nav {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border: 1px solid #a2a2a2;
+  background-color: #f4f4f4;
+  -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.947);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+@media (min-width: 769px) {
+  .nav,
+  .main-nav {
+    display: flex;
+  }
+  .nav {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1025px) {
+  .nav {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+/*END NAV STYLE */
+/** ANIMATIONS **/
+/* RAINBOW ANIMATIONS */
 .yellowRainbow:hover {
   background-image: linear-gradient(
     to right,
@@ -456,38 +494,7 @@ main {
   padding: 8px 16px;
   text-decoration: none;
 }
-/* END yellow animation */
-
-/* TABLE STYLING */
-.myTable {
-  visibility: hidden;
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-  margin-top: 30px;
-}
-
-.myTable td,
-.myTable th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-.myTable tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-.myTable tr:hover {
-  background-color: #ddd;
-}
-
-.myTable th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  background-color: #fb2d2d;
-  color: white;
-}
-/* END TABLE STYLING */
+/* END RAINBOW ANIMATIONS */
 /* image flying animation */
 .flier {
   animation: fly 50s linear infinite;
@@ -554,8 +561,6 @@ main {
   transform: translateY(-10%);
   animation: floater 1.5s infinite;
   transition: ease 0.5s;
-  /* width: 80px;
-  height: 80px; */
 }
 /* END floating animation */
 
@@ -590,6 +595,51 @@ main {
   }
 }
 /*END heartbeat animation */
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* END ANIMATIONS */
+/* TABLE STYLING */
+.myTable {
+  visibility: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.myTable td,
+.myTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.myTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.myTable tr:hover {
+  background-color: #ddd;
+}
+
+.myTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #fb2d2d;
+  color: white;
+}
+/* END TABLE STYLING */
+
 /* multiForm */
 .circle {
   display: flex;
@@ -657,71 +707,6 @@ main {
 }
 
 /* END tooltip*/
-
-/* NAV STYLE */
-
-nav a {
-  text-decoration: none;
-}
-
-.logo {
-  color: #ffc925;
-  margin: 0;
-  font-size: 1.7em;
-}
-
-.main-nav {
-  margin-top: 5px;
-}
-.logo a,
-.main-nav a {
-  padding: 10px 15px;
-  text-transform: uppercase;
-  text-align: center;
-  display: block;
-}
-
-.main-nav a {
-  color: #fbb92b;
-  font-size: 0.99em;
-}
-
-.main-nav :hover,
-a:hover {
-  color: #fce375;
-}
-
-.nav {
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  border: 1px solid #a2a2a2;
-  background-color: #f4f4f4;
-  -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.947);
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-}
-
-@media (min-width: 769px) {
-  .nav,
-  .main-nav {
-    display: flex;
-  }
-  .nav {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-@media (min-width: 1025px) {
-  .nav {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
-/*END NAV STYLE */
 
 .Trainertext li {
   list-style: circle;
@@ -796,6 +781,7 @@ a:hover {
   max-width: 1200px;
 }
 
+/* ERROR MESSAGE DESIGN */
 .alert {
   padding: 20px;
   margin-top: 30px;
@@ -820,6 +806,7 @@ a:hover {
 .closebtn:hover {
   color: black;
 }
+/* END ERROR MESSAGE DESIGN */
 
 .red {
   color: red;
@@ -848,7 +835,6 @@ a:hover {
   user-select: none;
 }
 
-/* The dots/bullets/indicators */
 .dot {
   cursor: pointer;
   height: 20px;
@@ -865,27 +851,12 @@ a:hover {
   background-color: rgb(201, 98, 98);
 }
 
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
 .slideshow-container img {
   max-width: 100%;
   height: 25rem;
   border: 1px solid rgb(250, 63, 63);
   border-radius: 8px;
   padding: 5px;
-}
-
-@keyframes fade {
-  from {
-    opacity: 0.4;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 /* On smaller screens, decrease text size */

@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <h1 class="Title">בחרו חבילה</h1>
+    <h1 class="Title">החבילות שלנו</h1>
     <ul class="TrainerContainer">
       <li class="ImageContainer">
         <img
@@ -77,6 +77,15 @@
       </li>
     </ul>
     <form class="formContainer">
+      <div class="input-group">
+        <label>בחר תוכנית:</label>
+        <select required id="plan">
+          <option value="" disabled hidden selected></option>
+          <option value="3M">תלת חודשי</option>
+          <option value="6M">חצי שנתי</option>
+          <option value="1Y">שנתי</option>
+        </select>
+      </div>
       <div class="input-group">
         <label>החל אימונים מתאריך:</label>
         <input id="startDate" type="date" />

@@ -1,8 +1,3 @@
-#aboutUs header {
-  background-color: white;
-  height: 200px;
-}
-
 #aboutUs .ImageContainer {
   cursor: pointer;
   position: relative;
@@ -14,7 +9,6 @@
   font-size: 35px;
   margin-bottom: 0px;
 }
-
 
 #aboutUs .button-primary {
   font-size: large;
