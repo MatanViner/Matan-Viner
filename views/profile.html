@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <script defer src="../js/script.js"></script>
+    <script defer type="module" src="../js/profile.js"></script>
+    <script>
+      const currentUser = <%-user %> || null;
+      const measurements = <%-measurements %> || null;
+    </script>
+    <title>הפרופיל שלי</title>
+  </head>
+  <body id="profile">
+    <div><h1 class="Title">הפרופיל שלי</h1></div>
+    <div class="main">
+      <form id="personal-details" class="formContainer" action="/profileForm">
+        <div class="details">
+          <div class="input-group">
+            <label for="profileUsername">שם משתמש:</label>
+            <input
+              id="username"
+              type="text"
+              name="profileUsername"
+              required
+              disabled
+              value="{username}"
+            />
+          </div>
+          <div class="input-group">
+            <label for="profileFirstName">שם:</label>
+            <input
+              id="firstName"
+              type="text"
+              name="profileFirstName"
+              required
+              disabled
+            />
+          </div>
+          <div class="input-group">
+            <label for="profileLastName">שם משפחה:</label>
+            <input
+              id="lastName"
+              type="text"
+              name="profileLastName"
+              required
+              disabled
+            />
+          </div>
+          <div class="input-group">
+            <label for="profileDOB">תאריך לידה:</label>
+            <input id="bod" type="date" name="profileDOB" required disabled />
+          </div>
+          <div class="input-group SelectBox">
+            <label>מגדר:</label>
+            <select disabled id="gender" form="personal-details">
+              <option value="" disabled hidden selected>בחר מגדר</option>
+              <option value="גבר">גבר</option>
+              <option value="אישה">אישה</option>
+              <option value="אחר">אחר</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="profilePhone">טלפון:</label>
+            <input
+              id="phone"
+              type="text"
+              name="profilePhone"
+              required
+              disabled
+            />
+          </div>
+          <div class="input-group">
+            <label for="profileEmail">דו"אל:</label>
+            <input
+              id="email"
+              type="email"
+              name="profileEmail"
+              required
+              disabled
+            />
+          </div>
+          <div class="input-group">
+            <label for="profileJoindate">תאריך הצטרפות:</label>
+            <input
+              id="joinDate"
+              type="date"
+              name="profileJoindate"
+              required
+              disabled
+            />
+          </div>
+          <button class="button-primary" id="update">
+            <span>עדכן פרטים</span>
+          </button>
+        </div>
+        <div class="imgContainer">
+          <img
+            src="../graphics/images/Icons/avatar-placeholder.png"
+            alt="profile image"
+            height="200"
+          />
+        </div>
+      </form>
+      <form id="measurements" class="formContainer" action="/MeasuresForm">
+        <div class="input-group">
+          <label for="profileHeight">גובה:</label>
+          <input
+            id="height"
+            type="number"
+            min="10"
+            max="250"
+            placeholder="*בסנטימטרים"
+            name="profileHeight"
+            disabled
+            required
+          />
+        </div>
+        <div class="input-group">
+          <label for="profileWeight">משקל:</label>
+          <input
+            id="weight"
+            type="number"
+            min="20"
+            max="300"
+            name="profileWeight"
+            disabled
+          />
+        </div>
+        <div class="input-group">
+          <label for="profileWaist">היקף מותן:</label>
+          <input
+            min="0"
+            id="waist"
+            type="number"
+            name="profileWaist"
+            required
+            disabled
+          />
+        </div>
+        <div class="input-group">
+          <label for="profileChest">היקף חזה:</label>
+          <input
+            min="0"
+            id="chest"
+            type="number"
+            name="profileChest"
+            required
+            disabled
+          />
+        </div>
+        <div class="input-group">
+          <label for="profileArms">היקף ידיים:</label>
+          <input
+            min="0"
+            id="arms"
+            type="number"
+            name="profileArms"
+            required
+            disabled
+          />
+        </div>
+
+        <button class="button-primary" id="measurebutton">
+          <img src="../graphics/images/Icons/weight.png" alt="weigt" />
+          <span id="new-measurement">מדידה חדשה</span>
+        </button>
+        <a class="button" href="/progress.html" id="progressbutton">
+          <button class="button-primary">
+            <img
+              src="../graphics/images/Icons/graphic-progression.png"
+              alt="progress"
+            />
+            <span>צפה בהתקדמות</span>
+          </button></a
+        >
+        <a href="/Calculators.html">
+          <button class="button-primary" id="calculatebutton">
+            <img src="../graphics/images/Icons/heart-attack.png" />
+            <span>מחשבוני בריאות</span>
+          </button></a
+        >
+      </form>
+    </div>
+    <div id="alert" class="alert hidden">
+      <span class="closebtn">&times;</span>
+      <strong>שים לב!<span id="msg"></span></strong>
+    </div>
+  </body>
+</html>

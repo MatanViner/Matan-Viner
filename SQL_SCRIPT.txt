@@ -1,0 +1,163 @@
+
+DROP DATABASE IF EXISTS `web`;
+CREATE DATABASE `web`;
+USE `web`;
+
+
+
+CREATE TABLE `customers` (
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `firstName` varchar(20) NOT NULL,
+  `lastName` varchar(20) NOT NULL,
+  `birthday` datetime NOT NULL,
+  `phone` varchar(16) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `joinDate` datetime NOT NULL,
+  PRIMARY KEY (`username`)
+);
+
+
+INSERT INTO `customers`
+(`username`,
+`password`,
+`firstName`,
+`lastName`,
+`birthday`,
+`phone`,
+`email`,
+`gender`,
+`joinDate`)
+VALUES
+('matan',
+'123456',
+'matan',
+'viner',
+'1995-01-01 00:00:00.000',
+'0521234567',
+'matan@viner.com',
+'גבר',
+'2023-01-01 00:00:00.000');
+
+
+CREATE TABLE `measures` (
+  `measureDate` datetime NOT NULL,
+  `username` varchar(40) NOT NULL,
+  `weight` double DEFAULT NULL,
+  `height` double DEFAULT NULL,
+  `waist` double DEFAULT NULL,
+  `chest` double DEFAULT NULL,
+  `arms` double DEFAULT NULL,
+  PRIMARY KEY (`measureDate`,`username`),
+  KEY `FK_CUSTOMER2` (`userName`)
+);
+
+ALTER TABLE `measures` 
+ADD CONSTRAINT `user`
+  FOREIGN KEY (`username`)
+  REFERENCES `web`.`customers` (`username`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+
+
+INSERT INTO `measures`
+(`measureDate`,
+`username`,
+`weight`,
+`height`,
+`waist`,
+`chest`,
+`arms`)
+VALUES
+('2023-01-01 00:00:00.000',
+'matan',
+100,
+190,
+100,
+100,
+100),
+('2023-01-08 00:00:00.000',
+'matan',
+98,
+190,
+99,
+100,
+100),
+('2023-01-20 00:00:00.000',
+'matan',
+96,
+190,
+95,
+99,
+99);
+
+
+CREATE TABLE `packages` (
+  `packageID` int NOT NULL,
+  `packageName` varchar(50) NOT NULL,
+  `price` double NOT NULL,
+  PRIMARY KEY (`packageID`)
+);
+
+INSERT INTO `packages`
+(`packageID`,
+`packageName`,
+`price`)
+VALUES
+(1, 'yearly', 799),
+(2, '6months', 569),
+(3, '3months', 449);
+
+
+CREATE TABLE `payments` (
+  `customer` varchar(50) NOT NULL,
+  `packageID` int NOT NULL,
+  `payDate` datetime NOT NULL,
+  `discount` double NOT NULL,
+  `totalPrice` double NOT NULL,
+  `paymentMethod` varchar(50) NOT NULL,
+  PRIMARY KEY (`customer`,`packageID`,`payDate`),
+  KEY `FK_package` (`packageID`),
+  CONSTRAINT `FK_customer1` FOREIGN KEY (`customer`) REFERENCES `customers` (`username`),
+  CONSTRAINT `FK_package` FOREIGN KEY (`packageID`) REFERENCES `packages` (`packageID`)
+) ;
+
+
+INSERT INTO `payments`
+(`customer`,
+`packageID`,
+`payDate`,
+`discount`,
+`totalPrice`,
+`paymentMethod`)
+VALUES
+('matan',
+1,
+'2023-01-01 00:00:00.000',
+0.3,
+559.3,
+'credit');
+
+  CREATE TABLE `contact_forms` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(2000) NULL,
+  `name` VARCHAR(2000) NULL,
+  `phone` VARCHAR(2000) NULL,
+  `topic` VARCHAR(2000) NULL,
+  `content` VARCHAR(2000) NULL,
+  PRIMARY KEY (`id`));
+
+INSERT INTO `contact_forms`
+(`email`,
+`name`,
+`phone`,
+`topic`,
+`content`)
+VALUES
+('example@email',
+'example name',
+'12345677',
+'example topic',
+'example content');

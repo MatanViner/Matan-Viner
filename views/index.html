@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GetFit - דף הבית</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <script>
+      const currentUser = <%-user %> || null;
+    </script>
+    <script defer src="../js/script.js"></script>
+    <script defer src="../js/homePage.js"></script>
+  </head>
+  <body>
+    <main>
+      <h1 class="Title redRainbow fade">"מה שמאתגר אותך משנה אותך"</h1>
+      <div class="slideshow-container">
+        <div class="mySlides fade">
+          <img src="../graphics/images/sliderShow/slider1.jpg" />
+        </div>
+        <div class="mySlides fade">
+          <img src="../graphics/images/sliderShow/slider2.jpg" />
+        </div>
+        <div class="mySlides fade">
+          <img src="../graphics/images/sliderShow/slider3.jpg" />
+        </div>
+        <br />
+        <div style="text-align: center">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+      </div>
+
+      <a href="http://localhost:3000/about"
+        ><button class="button-primary redRainbow">
+          <span>מי אנחנו?</span>
+        </button></a
+      >
+    </main>
+  </body>
+</html>

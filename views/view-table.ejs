@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      td {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <% if(data && data.length) { %>
+    <table>
+      <thead>
+        <tr>
+          <% for(const key of Object.keys(data[0])) { %>
+          <td><%= key %></td>
+          <% } %>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(let i = 0; i < data.length; i++) { %>
+        <tr>
+          <% for(const value of Object.values(data[i])) { %>
+          <td><%= value %></td>
+          <% } %>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+    <% } else {%>
+    <div>No rows in this table</div>
+    <% } %>
+  </body>
+</html>

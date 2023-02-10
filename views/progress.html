@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="../js/script.js"></script>
+    <script defer src="../js/progress.js"></script>
+    <script>
+      const currentUser = `<%-user %>` || null;
+    </script>
+    <title>ההתקדמות שלי</title>
+  </head>
+
+  <body id="progress">
+    <form class="formContainer">
+      <p class="Pcontainer">
+        בעמוד זה תוכלו לראות באופן גרפי את ההתקדמות שלכם על סמך היסטוריית
+        המדידות שלכם אצלנו!
+        <br />
+        בחרו טווח תאריכים (לא חובה) ומדד רצוי.
+      </p>
+      <div class="input-group">
+        <label
+          ><div class="tooltip">
+            <img src="../graphics/images/Icons/info.png" alt="info" />
+            <span class="tooltiptext"
+              >אם לא תבחר תאריך -נציג לך התקדמות מהמדידה הראשונה שלך</span
+            >
+            מתאריך:
+          </div>
+        </label>
+        <input type="date" id="startDate" />
+      </div>
+      <div class="input-group">
+        <label
+          ><div class="tooltip">
+            <img src="../graphics/images/Icons/info.png" alt="info" />
+            <span class="tooltiptext"
+              >אם לא תבחר תאריך -נציג לך התקדמות עד המדידה האחרונה שלך</span
+            >
+            עד תאריך:
+          </div>
+        </label>
+        <input type="date" id="endDate" />
+      </div>
+      <div class="input-group">
+        <label>הצג לי התקדמות של:</label>
+        <select id="chartType" required>
+          <option value="unchoosed" disabled hidden selected>בחר מדד*</option>
+          <option value="fat">אחוז שומן</option>
+          <option value="weight">משקל</option>
+          <option value="circumference">היקפים</option>
+        </select>
+      </div>
+      <button id="showChart" class="button-primary">
+        <span
+          >הצג <img src="../graphics/images/Icons/loupe.png" alt="search" />
+        </span>
+      </button>
+    </form>
+    <div id="alert" class="alert hidden">
+      <span class="closebtn">&times;</span>
+      <strong>שים לב! <span id="msg"></span></strong>
+    </div>
+    <div class="results">
+      <div>
+        <canvas id="myChart" style="display: none"></canvas>
+      </div>
+      <table id="measurementsTable" class="myTable">
+        <thead>
+          <tr>
+            <th>תאריך</th>
+            <th>משקל</th>
+            <th>גובה</th>
+            <th>% שומן</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </body>
+</html>

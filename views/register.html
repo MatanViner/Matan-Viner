@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <script defer src="../js/script.js"></script>
+    <script defer type="module" src="../js/register.js"></script>
+    <script>
+      const currentUser = <%-user %> || null;
+    </script>
+    <title>הרשמה</title>
+  </head>
+  <body id="register">
+    <div class="multiForm">
+      <div class="circle">
+        <span>1<br />הרשמה</span
+        ><img src="../graphics/images/Icons/verify.png" alt="verify" />
+      </div>
+      <div class="circle">
+        <span>2<br />בחירת תוכנית</span
+        ><img src="../graphics/images/Icons/answer.png" alt="choose" />
+      </div>
+      <div class="circle">
+        <span>3<br />תשלום</span
+        ><img
+          src="../graphics/images/Icons/credit-card.png"
+          alt="credit-card"
+        />
+      </div>
+    </div>
+    <div>
+      <h1 class="Title">הרשמה</h1>
+    </div>
+    <form
+      id="personal-details"
+      class="formContainer"
+      action="/register"
+      method="post"
+    >
+      <div class="details inputs-container">
+        <div class="input-group">
+          <label>שם משתמש:</label>
+          <input id="username" name="regUserName" type="text" required />
+        </div>
+        <div class="input-group">
+          <label>סיסמא:</label>
+          <input id="password" name="" type="password" required />
+        </div>
+        <div class="input-group">
+          <label>חזור על סיסמא:</label>
+          <input id="repassword" name="regPassword" type="password" required />
+        </div>
+        <div class="input-group">
+          <label>שם פרטי:</label>
+          <input id="firstName" name="regFirstName" type="text" required />
+        </div>
+        <div class="input-group">
+          <label>שם משפחה:</label>
+          <input id="lastName" name="regLastName" type="text" required />
+        </div>
+        <div class="input-group">
+          <label>תאריך לידה:</label>
+          <input id="bod" name="regBirthdate" type="date" required />
+        </div>
+        <div class="input-group">
+          <label>טלפון:</label>
+          <input
+            id="phone"
+            name="regPhone"
+            type="text"
+            required
+            placeholder="xxx-xxxxxxx"
+          />
+        </div>
+        <div class="input-group">
+          <label>דוא"ל:</label>
+          <input
+            id="email"
+            name="regEmail"
+            type="email"
+            required
+            placeholder="xxx@xxx.xxx"
+          />
+        </div>
+      </div>
+      <div class="measurements inputs-container">
+        <div class="input-group">
+          <label>משקל:</label>
+          <input
+            id="weight"
+            name="regWeight"
+            type="number"
+            required
+            placeholder="(בקילוגרמים)"
+          />
+        </div>
+        <div class="input-group SelectBox">
+          <label>מגדר:</label>
+          <select id="gender" required form="personal-details" name="regGender">
+            <option value="" disabled hidden selected>בחר מגדר</option>
+            <option name="male" value="גבר">גבר</option>
+            <option name="female" value="אישה">אישה</option>
+            <option name="other" value="אחר">אחר</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>גובה:</label>
+          <input
+            name="regHeight"
+            id="height"
+            type="number"
+            required
+            placeholder="(בסנטימטרים)"
+          />
+        </div>
+        <div class="input-group takanon">
+          <input id="takanon" type="checkbox" required />
+          <label for="takanon"
+            >אני מאשר שקראתי את
+            <a href="../graphics/files/takanon.pdf" target="_blank"
+              >התקנון</a
+            ></label
+          >
+        </div>
+        <div id="nextPage">
+          <button class="button-primary">
+            <img src="../graphics/images/Icons/answer.png" alt="answer" /><span
+              >מעבר לבחירת תוכנית
+            </span>
+          </button>
+        </div>
+      </div>
+    </form>
+    <br />
+    <div id="alert" class="alert hidden">
+      <span class="closebtn">&times;</span>
+      <strong>שים לב!<span id="msg"></span></strong>
+    </div>
+    <div id="signed">
+      לקוח קיים?
+      <a href="http://localhost:3000/login"
+        ><button class="button-primary"><span>כניסה למערכת</span></button>
+      </a>
+    </div>
+  </body>
+</html>
