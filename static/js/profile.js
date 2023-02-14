@@ -70,6 +70,10 @@ function newMeasure(e) {
 
 async function deleteMeasure(e) {
   e.preventDefault();
+  if (measurements.length === 1) {
+    errorMsg("לא ניתן למחוק את המדידה היחידה שיש לך.");
+    return;
+  }
   const username = { username: userNameInput.value };
   const response = await fetch("http://localhost:3000/api/delete-measure", {
     method: "post",

@@ -11,6 +11,7 @@ const CRUD = require("./CRUD");
 app.engine("html", require("ejs").renderFile);
 //INITS
 app.use(express.static("static"));
+app.use(express.static(__dirname));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
