@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="../css/style.css" />
     <script defer src="../js/script.js"></script>
     <script defer src="../js/contact.js"></script>
+    <script>
+      const currentUser = <%-user %> || null;
+    </script>
 
     <title>צור קשר</title>
   </head>
@@ -21,6 +24,7 @@
             placeholder="שם מלא"
             name="name"
             id="name_input"
+            minlength="2"
             required
           />
         </div>
@@ -35,7 +39,7 @@
           />
         </div>
         <div class="telephone">
-          <label for="name"></label>
+          <label for="phone"></label>
           <input
             type="text"
             placeholder="מס' טלפון"
@@ -52,7 +56,7 @@
             id="subject_input"
             required
           >
-            <option disabled hidden selected>בחר נושא</option>
+            <option value="" disabled hidden selected>בחר נושא</option>
             <option>קבלת פרטים</option>
             <option>פניה בנושא תשלום</option>
             <option>שאלה מקצועית בנושא אימונים/תזונה</option>
@@ -66,13 +70,17 @@
             id="message_input"
             cols="30"
             rows="5"
+            minlength="10"
             required
           ></textarea>
+        </div>
+        <div id="alert" class="alert hidden">
+          <span class="closebtn">&times;</span>
+          <strong>שים לב!<span id="msg"></span></strong>
         </div>
         <button class="button-primary"><span>שלח/י</span></button>
       </form>
     </div>
-
     <main>
       <h2 class="Title">שמרו איתנו על קשר</h2>
       <img
@@ -107,7 +115,5 @@
         </a>
       </ul>
     </main>
-
-    <script src="/js/footer.js"></script>
   </body>
 </html>

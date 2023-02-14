@@ -16,7 +16,8 @@ async function next(e) {
   const plan = document.getElementById("plan");
   if (
     checkNotEmpty(methodSelected.value, "method") &&
-    checkNotEmpty(plan.value, "plan")
+    checkNotEmpty(plan.value, "plan") &&
+    checkCopun(couponInput.value)
   ) {
     checkMethod(methodSelected);
     const response = await fetch("http://localhost:3000/choose-plan", {
@@ -48,7 +49,8 @@ async function next(e) {
 const validation = function () {
   return (
     checkNotEmpty(methodSelected.value, "method") &&
-    checkNotEmpty(plan.value, "plan")
+    checkNotEmpty(plan.value, "plan") &&
+    checkCopun(couponInput.value)
   );
 };
 
@@ -63,7 +65,13 @@ function checkMethod(methodSelected) {
     return;
   }
 }
-
+function checkCopun(copun) {
+  if (copun == "Web2022" || copun == "") {
+    return true;
+  }
+  errorMsg("קוד קופון לא קיים במערכת.");
+  return false;
+}
 function checkNotEmpty(input, type) {
   if (type === "method") {
     if (input === "") {

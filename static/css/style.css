@@ -1157,58 +1157,6 @@ textarea:focus {
 
 /* END LOGIN PAGE */
 
-/* PAYMENT PAGE */
-#payment .formContainer .input-group label {
-  min-width: 100px;
-}
-
-#payment .formContainer .input-group {
-  justify-content: unset;
-}
-
-#payment .formContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-#payment {
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  align-items: center;
-  gap: 10px;
-}
-
-#payment .Title {
-  padding: 50px;
-}
-
-#payment footer {
-  align-self: normal;
-}
-
-#payment .imgContainer {
-  margin-right: 50px;
-}
-
-#payment .circle:nth-child(1) {
-  background-color: #fcda7d;
-  color: rgb(248, 38, 38);
-  border-color: rgb(248, 38, 38);
-}
-#payment .circle:nth-child(2) {
-  background-color: #fcda7d;
-  color: rgb(248, 38, 38);
-  border-color: rgb(248, 38, 38);
-}
-#payment .circle:nth-child(3) {
-  background-color: #fcc83b;
-  color: rgb(248, 38, 38);
-  border-color: rgb(248, 38, 38);
-}
-/* END PAYMENT PAGE */
-
 /* PLANS PAGE */
 #plans .ImageContainer {
   cursor: pointer;

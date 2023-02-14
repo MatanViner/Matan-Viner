@@ -13,6 +13,7 @@ const user = currentUser;
 //get measurements inputs
 const updateForm = document.querySelectorAll("form#personal-details input");
 const newMeasurementButton = document.getElementById("measurebutton");
+const deleteButton = document.getElementById("deletebutton");
 const updateButton = document.getElementById("update");
 const heightInput = document.getElementById("height");
 const WeightInput = document.getElementById("weight");
@@ -29,12 +30,20 @@ const genderInput = document.getElementById("gender");
 const phoneInput = document.getElementById("phone");
 const emailInput = document.getElementById("email");
 const joinDateInput = document.getElementById("joinDate");
+const measureDate = document.getElementById("MeasureDate");
 //Insert active user measuers values to the inputs
-heightInput.value = measurements[measurements.length - 1].height;
-WeightInput.value = measurements[measurements.length - 1].weight;
-armsInput.value = measurements[measurements.length - 1].arms;
-chestInput.value = measurements[measurements.length - 1].chest;
-waistInput.value = measurements[measurements.length - 1].waist;
+if (measurements.length > 0) {
+  heightInput.value = measurements[measurements.length - 1].height;
+  WeightInput.value = measurements[measurements.length - 1].weight;
+  armsInput.value = measurements[measurements.length - 1].arms;
+  chestInput.value = measurements[measurements.length - 1].chest;
+  waistInput.value = measurements[measurements.length - 1].waist;
+  measureDate.value = new Date(
+    measurements[measurements.length - 1].measureDate
+  )
+    .toISOString()
+    .split("T")[0];
+}
 //Insert active user profile details
 console.log(user);
 
@@ -46,8 +55,8 @@ phoneInput.value = user.phone;
 emailInput.value = user.email;
 genderInput.value = user.gender;
 joinDateInput.value = new Date(user.joinDate).toISOString().split("T")[0];
-
 phoneInput.oninput = validatePhone;
+deleteButton.onclick = deleteMeasure;
 
 //START MEASURE BUTTON FUNCTION//
 function newMeasure(e) {
@@ -57,6 +66,19 @@ function newMeasure(e) {
     .forEach((input) => (input.disabled = false));
   newMeasurementButton.innerText = "שמור מדידה";
   newMeasurementButton.onclick = saveMeasure;
+}
+
+async function deleteMeasure(e) {
+  e.preventDefault();
+  const username = { username: userNameInput.value };
+  const response = await fetch("http://localhost:3000/api/delete-measure", {
+    method: "post",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(username),
+  });
+  const data = await response.json();
+  alert(data.message);
+  window.location.reload();
 }
 
 // save measure
@@ -74,7 +96,6 @@ async function saveMeasure(e) {
     waist: waistInput.value,
     weight: WeightInput.value,
   };
-
   const response = await fetch("http://localhost:3000/api/add-measure", {
     method: "post",
     headers: { "Content-Type": "application/json" },
@@ -83,8 +104,6 @@ async function saveMeasure(e) {
   const data = await response.json();
   alert(data.message);
 
-  // user.measurements.push(measure);
-  // localStorage.setItem("currentUser", JSON.stringify(user));
   document
     .querySelectorAll("form#measurements input")
     .forEach((input) => (input.disabled = true));
@@ -100,6 +119,7 @@ function update(e) {
   document
     .querySelectorAll("form#personal-details input")
     .forEach((input) => (input.disabled = false));
+  document.querySelector("input#username").disabled = true;
   genderInput.disabled = false;
   joinDateInput.disabled = true;
   updateButton.innerText = "שמור פרטים";

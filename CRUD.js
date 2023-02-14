@@ -159,6 +159,24 @@ const addMeasure = async (req, res) => {
   }
 };
 
+const deleteMeasure = async (req, res) => {
+  const username = req.session.user?.username;
+  if (!username) {
+    return res.status(401).send({ message: "Unauthorized" });
+  }
+  try {
+    const q = `DELETE FROM measures
+    where username = ? 
+    ORDER BY measureDate 
+    DESC LIMIT 1`;
+    await query(q, username);
+    res.json({ message: "נמחק בהצלחה" });
+  } catch (e) {
+    console.log(e);
+    return res.status(500).send({ message: "שגיאה במחיקה" });
+  }
+};
+
 const getMeasurementsByQuery = async (req, res) => {
   const username = req.session.user?.username;
   if (!username) {
@@ -277,6 +295,7 @@ const columns = {
   contact_forms: "(email, name, phone, topic, content)",
 };
 
+//DROPS IF EXISTS AND CREATES DB
 const createDb = async (req, res) => {
   const queries = readFileSync("./SQL_SCRIPT.txt", "utf8")
     .replace(/\r?\n/g, "")
@@ -291,10 +310,10 @@ const createDb = async (req, res) => {
       console.log(err);
     }
   }
-
+  console.log("DB created");
   res.send("Created tables successfully");
 };
-
+// ALL QUERIES FOR CREATING TABLES
 const createQuery = {
   customers: `CREATE TABLE \`customers\` (
       \`username\` varchar(50) NOT NULL,
@@ -350,6 +369,20 @@ const createQuery = {
     PRIMARY KEY (\`id\`));`,
 };
 
+//drops all tables
+const dropAll = async (req, res) => {
+  try {
+    const q1 = `DROP TABLE IF EXISTS \`measures\`,\`packages\`,\`payments\`,\`customers\`, \`contact_forms\` `;
+    await query(q1);
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(`Error: ${err.message}`);
+    return;
+  }
+  console.log("Tables dropped.");
+  res.send(`All tables have been dropped if existed :)`);
+};
+//function for view, select, create, delete,
 const handleTable = async (req, res) => {
   const { tableName, action } = req.params;
   const availableTables = Object.keys(columns);
@@ -359,7 +392,6 @@ const handleTable = async (req, res) => {
     });
     return;
   }
-
   try {
     if (action === "view") {
       const q = `SELECT * FROM ${tableName}`;
@@ -399,7 +431,8 @@ const handleTable = async (req, res) => {
     console.log(err);
     res.status(400).send(`Error: ${err.message}
     <br><br><br>
-    \nif you got "Duplicate entry" make sure to delete the table first
+    \nif you got "Duplicate entry" make sure to delete the table first.
+    \nif you got "foreign key" error make sure to drop the refrenced table first.
     `);
   }
 };
@@ -407,7 +440,6 @@ const handleTable = async (req, res) => {
 async function contact(req, res) {
   console.log(req.body);
   const q = `INSERT INTO contact_forms (name, email, content, topic, phone) VALUES (?, ?, ?, ?, ?)`;
-
   await query(q, [
     req.body.name,
     req.body.email,
@@ -425,6 +457,7 @@ module.exports = {
   registration,
   choosePlan,
   addMeasure,
+  deleteMeasure,
   login,
   checkUsername,
   getUserMeasurements,
@@ -436,4 +469,5 @@ module.exports = {
   handleTable,
   contact,
   createDb,
+  dropAll,
 };

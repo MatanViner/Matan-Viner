@@ -1,35 +1,55 @@
 # Tables
 
-## create all
+## create all:
+// deletes the DB if exists and recreates it 
+http://localhost:3000/api/table/createDB
 
-http://localhost:3000/api/table/create
+## deletes all tables:
+http://localhost:3000/dropAll
 
-## manipulate specific tables:
+## manipulate specific tables (create, drop, delete, view, insert):
 
+//customers table:
 http://localhost:3000/api/table/customers/view
 http://localhost:3000/api/table/customers/delete
 http://localhost:3000/api/table/customers/add
+http://localhost:3000/api/table/customers/drop 
+http://localhost:3000/api/table/customers/create
 
+//measures table:
 http://localhost:3000/api/table/measures/view
 http://localhost:3000/api/table/measures/delete
 http://localhost:3000/api/table/measures/add
+http://localhost:3000/api/table/measures/drop 
+http://localhost:3000/api/table/measures/create
 
+//packages table: 
 http://localhost:3000/api/table/packages/view
 http://localhost:3000/api/table/packages/delete
 http://localhost:3000/api/table/packages/add
+http://localhost:3000/api/table/packages/drop 
+http://localhost:3000/api/table/packages/create
 
+//payments table:
 http://localhost:3000/api/table/payments/view
 http://localhost:3000/api/table/payments/delete
 http://localhost:3000/api/table/payments/add
+http://localhost:3000/api/table/payments/drop 
+http://localhost:3000/api/table/payments/create
 
+//contact table: 
 http://localhost:3000/api/table/contact_forms/view
 http://localhost:3000/api/table/contact_forms/delete
 http://localhost:3000/api/table/contact_forms/add
+http://localhost:3000/api/table/contact_forms/drop 
+http://localhost:3000/api/table/contact_forms/create
 
-## modules
-
+## modules used 
 express,
+express-session,
 MySQL,
+ejs
+
 
 ## SQL SYNTAX
 DROP DATABASE IF EXISTS `web`;

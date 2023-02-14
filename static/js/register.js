@@ -37,9 +37,7 @@ async function checkUsername() {
     userNameInput.value = "";
   }
 }
-
 userNameInput.onblur = checkUsername;
-
 setTimeout(() => {
   checkUsername();
 }, 1000);

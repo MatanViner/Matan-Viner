@@ -1,10 +1,10 @@
-function checkIsNumber(input) {
+export function checkIsNumber(input) {
   const checked = Number(input);
   return isNaN(checked);
 }
 
 export const nameCheck = function (firstNameInput, lastNameInput, errorMsg) {
-  if (firstNameInput.value.length < 2 || lastNameInput.value < 2) {
+  if (firstNameInput.value.length < 2 || lastNameInput.value.length < 2) {
     errorMsg("בחר שם/שם משפחה שמכיל יותר מאות אחת.");
     return false;
   }

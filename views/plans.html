@@ -22,13 +22,6 @@
         <span>2<br />בחירת תוכנית</span
         ><img src="../graphics/images/Icons/answer.png" alt="choose" />
       </div>
-      <div class="circle">
-        <span>3<br />תשלום</span
-        ><img
-          src="../graphics/images/Icons/credit-card.png"
-          alt="credit-card"
-        />
-      </div>
     </div>
 
     <h1 class="Title">החבילות שלנו</h1>
@@ -97,7 +90,7 @@
       </div>
       <div class="input-group">
         <label for="plansStartDate">החל אימונים מתאריך:</label>
-        <input id="startDate" type="date" name="plansStartDate" />
+        <input required id="startDate" type="date" name="plansStartDate" />
       </div>
       <div class="input-group">
         <label for="plansCopun">קוד קופון (אופציונלי)</label>
@@ -105,9 +98,8 @@
       </div>
       <div class="input-group">
         <label>אמצעי תשלום:</label>
-        <select id="method">
+        <select required id="method">
           <option value="" disabled hidden selected></option>
-          <option value="card">כרטיס אשראי</option>
           <option value="PayPal">PayPal</option>
           <option value="Bit">העברה בביט</option>
         </select>

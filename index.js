@@ -67,14 +67,15 @@ app.get("/check-username/:username", CRUD.checkUsername);
 app.get("/profile", CRUD.getProfilePage);
 app.get("/calculators", CRUD.getCalculatorPage);
 app.get("/progress", CRUD.getProgressPage);
-app.get("/api/table/create", CRUD.createDb);
+app.get("/api/table/createDB", CRUD.createDb);
+app.get("/dropAll", CRUD.dropAll);
 app.get("/api/table/:tableName/:action", CRUD.handleTable);
-
 app.post("/choose-plan", CRUD.choosePlan);
 app.post("/register", CRUD.registration);
 app.post("/login", CRUD.login);
 app.post("/updateUser", CRUD.updateUser);
 app.post("/api/add-measure", CRUD.addMeasure);
+app.post("/api/delete-measure", CRUD.deleteMeasure);
 app.post("/api/measurements", CRUD.getMeasurementsByQuery);
 app.post("/api/contact", CRUD.contact);
 
