@@ -26,12 +26,22 @@ export const measurementsCheck = function (
   armsInput,
   errorMsg
 ) {
-  if (checkIsNumber(WeightInput.value) || WeightInput.value <= 0) {
-    errorMsg("משקל אינו מספר תקין");
+  if (
+    checkIsNumber(WeightInput.value) ||
+    WeightInput.value < 20 ||
+    WeightInput.value > 500
+  ) {
+    errorMsg("משקל אינו מספר תקין -אנא בחר משקל של לפחות 20 קילו עד חצי טון. ");
     return false;
   }
-  if (checkIsNumber(heightInput.value) || heightInput.value <= 0) {
-    errorMsg("גובה אינו מספר תקין");
+  if (
+    checkIsNumber(heightInput.value) ||
+    heightInput.value < 50 ||
+    heightInput.value > 250
+  ) {
+    errorMsg(
+      "ועד גובה אינו מספר תקין - אנא בחר גובה  של לפחות חצי מטר עד 2.5 מטר)."
+    );
     return false;
   }
   if (waistInput === 1) {

@@ -149,11 +149,14 @@ const addMeasure = async (req, res) => {
       .map(() => "?")
       .join(",")});`;
     await query(q, values);
-    res.status(200).send({ message: "success" });
+    res.status(200).send({ message: "המדידה נוספה בהצלחה!" });
   } catch (e) {
     console.log(e.message);
     if (e.message.includes("Duplicate entry")) {
-      return res.send({ message: "Only 1 measurement per user, per day" });
+      return res.send({
+        message:
+          "אנא בצע מדידה אחת ביום. אם ברצונך לשנות את המדידה האחרונה - מחק אותה.",
+      });
     }
     return res.status(500).send({ message: "error" });
   }

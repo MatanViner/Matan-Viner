@@ -65,6 +65,8 @@ function newMeasure(e) {
     .querySelectorAll("form#measurements input")
     .forEach((input) => (input.disabled = false));
   newMeasurementButton.innerText = "שמור מדידה";
+  measureDate.value = new Date().toISOString().split("T")[0];
+  measureDate.disabled = true;
   newMeasurementButton.onclick = saveMeasure;
 }
 
@@ -114,6 +116,7 @@ async function saveMeasure(e) {
   newMeasurementButton.onclick = newMeasure;
   newMeasurementButton.innerText = "מדידה חדשה";
   newMeasurementButton.setAttribute("type", "");
+  window.location.reload();
 }
 //END
 
